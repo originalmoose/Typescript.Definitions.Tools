@@ -66,15 +66,18 @@ namespace Typescript.Definitions.Core
 
                 var builder = new TypescripDefinitionBuilder();
 
-                services.AddSingleton(builder);
+                services.AddSingleton((p) => builder);
 
                 var provider = Invoke(
                                    _startupType,
-                                   new[] { "ConfigureDesignTimeServices" },
+                                   new[] { "TypescriptDefinition" },
                                    services) as IServiceProvider
                                ?? services.BuildServiceProvider();
-                
 
+                foreach (var option in builder.Options)
+                {
+                    Console.WriteLine($"Building Definition {option.DefinitionFileName}.d.ts");
+                }
             }
             catch (Exception)
             {
@@ -132,7 +135,7 @@ namespace Typescript.Definitions.Core
             try
             {
                 var instance = !method.IsStatic
-                    ? ActivatorUtilities.GetServiceOrCreateInstance(GetHostServices(), type)
+                    ? ActivatorUtilities.GetServiceOrCreateInstance(services.BuildServiceProvider(), type)
                     : null;
 
                 var parameters = method.GetParameters();
@@ -142,7 +145,7 @@ namespace Typescript.Definitions.Core
                     var parameterType = parameters[i].ParameterType;
                     arguments[i] = parameterType == typeof(IServiceCollection)
                         ? services
-                        : ActivatorUtilities.GetServiceOrCreateInstance(GetHostServices(), parameterType);
+                        : ActivatorUtilities.GetServiceOrCreateInstance(services.BuildServiceProvider(), parameterType);
                 }
 
                 return method.Invoke(instance, arguments);
@@ -170,6 +173,16 @@ namespace Typescript.Definitions.Core
     public class TypescripDefinitionBuilder
     {
         public IList<TypescriptDefinitionOption> Options { get; set; } = new List<TypescriptDefinitionOption>();
+
+        public TypescripDefinitionBuilder AddDefinitionFile(Action<TypescriptDefinitionOptionsBuilder> action)
+        {
+            var builder = new TypescriptDefinitionOptionsBuilder();
+
+            action(builder);
+
+            Options.Add(builder.Options);
+            return this;
+        }
     }
 
     public class DotNetProjectBuilder
