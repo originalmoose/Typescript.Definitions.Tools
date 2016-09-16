@@ -2,7 +2,7 @@
 
 This is currently a Work in Progress....
 
-A helper library to generate typescript definition files and typescript files from c# code.
+A helper library to generate typescript definition files and typescript files from c# code specifically .NET Core Web applications.
 
 This project took much of its inspiration from TypeLITE and the EntityFramework Core Tools project.
 
