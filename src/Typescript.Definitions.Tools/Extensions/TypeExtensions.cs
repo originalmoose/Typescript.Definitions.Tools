@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Typescript.Definitions.Tools.TsModels
+namespace Typescript.Definitions.Tools.Extensions
 {
     public static class TypeExtensions
     {

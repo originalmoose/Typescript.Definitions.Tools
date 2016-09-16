@@ -57,69 +57,69 @@ namespace Typescript.Definitions.Tools.TsModels
             : base(type)
         {
 
-            this.Properties = this.Type
+            Properties = Type
                 .GetProperties()
-                .Where(pi => pi.DeclaringType == this.Type)
+                .Where(pi => pi.DeclaringType == Type)
                 .Select(pi => new TsProperty(pi))
                 .ToList();
 
-            this.Fields = this.Type
+            Fields = Type
                 .GetFields()
-                .Where(fi => fi.DeclaringType == this.Type
+                .Where(fi => fi.DeclaringType == Type
                              && !(fi.IsLiteral && !fi.IsInitOnly)) // skip constants
                 .Select(fi => new TsProperty(fi))
                 .ToList();
 
-            this.Constants = this.Type
+            Constants = Type
                 .GetFields()
-                .Where(fi => fi.DeclaringType == this.Type
+                .Where(fi => fi.DeclaringType == Type
                              && fi.IsLiteral && !fi.IsInitOnly) // constants only
                 .Select(fi => new TsProperty(fi))
                 .ToList();
 
             if (TypeInfo.IsGenericType)
             {
-                this.Name = type.Name.Remove(type.Name.IndexOf('`'));
-                this.GenericArguments = type
+                Name = type.Name.Remove(type.Name.IndexOf('`'));
+                GenericArguments = type
                     .GetGenericArguments()
-                    .Select(TsType.Create)
+                    .Select(Create)
                     .ToList();
             }
             else
             {
-                this.Name = type.Name;
-                this.GenericArguments = new TsType[0];
+                Name = type.Name;
+                GenericArguments = new TsType[0];
             }
 
-            if (TypeInfo.BaseType != null && this.TypeInfo.BaseType != typeof(object) && this.TypeInfo.BaseType != typeof(ValueType))
+            if (TypeInfo.BaseType != null && TypeInfo.BaseType != typeof(object) && TypeInfo.BaseType != typeof(ValueType))
             {
-                this.BaseType = new TsType(this.TypeInfo.BaseType);
+                BaseType = new TsType(TypeInfo.BaseType);
             }
 
-            var interfaces = this.Type.GetInterfaces();
-            this.Interfaces = interfaces
+            var interfaces = Type.GetInterfaces();
+            Interfaces = interfaces
                 .Where(@interface => @interface.GetTypeInfo().GetCustomAttribute<TsInterfaceAttribute>(false) != null)
                 .Except(interfaces.SelectMany(@interface => @interface.GetInterfaces()))
-                .Select(TsType.Create).ToList();
+                .Select(Create).ToList();
 
-            var attribute = this.TypeInfo.GetCustomAttribute<TsClassAttribute>(false);
+            var attribute = TypeInfo.GetCustomAttribute<TsClassAttribute>(false);
             if (attribute != null)
             {
                 if (!string.IsNullOrEmpty(attribute.Name))
                 {
-                    this.Name = attribute.Name;
+                    Name = attribute.Name;
                 }
 
                 if (attribute.Module != null)
                 {
-                    this.Module.Name = attribute.Module;
+                    Module.Name = attribute.Module;
                 }
             }
 
-            var ignoreAttribute = this.TypeInfo.GetCustomAttribute<TsIgnoreAttribute>(false);
+            var ignoreAttribute = TypeInfo.GetCustomAttribute<TsIgnoreAttribute>(false);
             if (ignoreAttribute != null)
             {
-                this.IsIgnored = true;
+                IsIgnored = true;
             }
         }
     }

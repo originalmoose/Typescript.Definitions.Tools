@@ -4,7 +4,7 @@ using Microsoft.DotNet.InternalAbstractions;
 using Microsoft.DotNet.ProjectModel;
 using NuGet.Frameworks;
 
-namespace Typescript.Definitions.Core
+namespace Typescript.Definitions.Tools
 {
     public class ProjectContextFactory
     {

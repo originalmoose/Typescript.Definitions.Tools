@@ -32,21 +32,21 @@ namespace Typescript.Definitions.Tools.TsModels
             : base(type)
         {
 
-            var enumerableType = TsType.GetEnumerableType(this.Type);
+            var enumerableType = GetEnumerableType(Type);
             if (enumerableType != null)
             {
-                this.ItemsType = TsType.Create(enumerableType);
+                ItemsType = Create(enumerableType);
             }
-            else if (typeof(IEnumerable).IsAssignableFrom(this.Type))
+            else if (typeof(IEnumerable).IsAssignableFrom(Type))
             {
-                this.ItemsType = TsType.Any;
+                ItemsType = Any;
             }
             else
             {
-                throw new ArgumentException(string.Format("The type '{0}' is not collection.", this.Type.FullName));
+                throw new ArgumentException(string.Format("The type '{0}' is not collection.", Type.FullName));
             }
 
-            this.Dimension = GetCollectionDimension(type);
+            Dimension = GetCollectionDimension(type);
         }
 
         private static int GetCollectionDimension(Type t)

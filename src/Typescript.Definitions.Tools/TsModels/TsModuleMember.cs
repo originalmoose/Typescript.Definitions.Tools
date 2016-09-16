@@ -20,15 +20,9 @@ namespace Typescript.Definitions.Tools.TsModels
             }
             set
             {
-                if (_module != null)
-                {
-                    _module.Remove(this);
-                }
+                _module?.Remove(this);
                 _module = value;
-                if (_module != null)
-                {
-                    _module.Add(this);
-                }
+                _module?.Add(this);
             }
         }
 
@@ -45,14 +39,14 @@ namespace Typescript.Definitions.Tools.TsModels
             : base(type)
         {
 
-            var moduleName = this.Type.Namespace;
+            var moduleName = Type.Namespace;
             if (type.DeclaringType != null)
             {
                 moduleName += "." + type.DeclaringType.Name;
             }
 
-            this.Module = new TsModule(moduleName);
-            this.Name = this.Type.Name;
+            Module = new TsModule(moduleName);
+            Name = Type.Name;
         }
     }
 }

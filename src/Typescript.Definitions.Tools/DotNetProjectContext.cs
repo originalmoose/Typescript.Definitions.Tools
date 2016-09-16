@@ -4,7 +4,7 @@ using Microsoft.DotNet.ProjectModel;
 using Microsoft.DotNet.ProjectModel.Loader;
 using NuGet.Frameworks;
 
-namespace Typescript.Definitions.Core
+namespace Typescript.Definitions.Tools
 {
     public class DotNetProjectContext : IProjectContext
     {

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Threading.Tasks;
+using Typescript.Definitions.Tools.Extensions;
 
 namespace Typescript.Definitions.Tools.TsModels
 {
@@ -11,7 +11,7 @@ namespace Typescript.Definitions.Tools.TsModels
         /// <summary>
         /// Gets the CLR type represented by this instance of the TsType.
         /// </summary>
-        public Type Type { get; private set; }
+        public Type Type { get; }
 
         private TypeInfo _typeinfo;
         public TypeInfo TypeInfo => _typeinfo ?? (_typeinfo = Type.GetTypeInfo());
@@ -27,7 +27,7 @@ namespace Typescript.Definitions.Tools.TsModels
                 type = type.GetNullableValueType();
             }
 
-            this.Type = type;
+            Type = type;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Typescript.Definitions.Tools.TsModels
         /// <returns></returns>
         public bool IsCollection()
         {
-            return GetTypeFamily(this.Type) == TsTypeFamily.Collection;
+            return GetTypeFamily(Type) == TsTypeFamily.Collection;
         }
 
 
@@ -52,11 +52,11 @@ namespace Typescript.Definitions.Tools.TsModels
         /// </summary>
         /// <param name="type">The CLR type to get TsTypeFamily of</param>
         /// <returns>TsTypeFamily of the CLR type</returns>
-        internal static TsTypeFamily GetTypeFamily(System.Type type)
+        internal static TsTypeFamily GetTypeFamily(Type type)
         {
             if (type.IsNullable())
             {
-                return TsType.GetTypeFamily(type.GetNullableValueType());
+                return GetTypeFamily(type.GetNullableValueType());
             }
 
             var isString = (type == typeof(string));
@@ -90,7 +90,7 @@ namespace Typescript.Definitions.Tools.TsModels
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        internal static TsType Create(System.Type type)
+        internal static TsType Create(Type type)
         {
             var family = GetTypeFamily(type);
             switch (family)

@@ -54,7 +54,7 @@ namespace Typescript.Definitions.Tools.TsModels
         public TsModule(string name)
         {
             _members = new HashSet<TsModuleMember>();
-            this.Name = name;
+            Name = name;
         }
 
         /// <summary>

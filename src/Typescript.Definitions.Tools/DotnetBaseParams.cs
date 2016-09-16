@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Extensions.CommandLineUtils;
 using NuGet.Frameworks;
 
-namespace Typescript.Definitions.Core
+namespace Typescript.Definitions.Tools
 {
     public class DotnetBaseParams
     {

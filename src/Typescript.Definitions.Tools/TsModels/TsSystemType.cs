@@ -20,12 +20,12 @@ namespace Typescript.Definitions.Tools.TsModels
             : base(type)
         {
 
-            switch (this.Type.Name)
+            switch (Type.Name)
             {
-                case "Boolean": this.Kind = SystemTypeKind.Bool; break;
+                case "Boolean": Kind = SystemTypeKind.Bool; break;
                 case "String":
                 case "Char":
-                    this.Kind = SystemTypeKind.String; break;
+                    Kind = SystemTypeKind.String; break;
                 case "Byte":
                 case "SByte":
                 case "Int16":
@@ -39,10 +39,10 @@ namespace Typescript.Definitions.Tools.TsModels
                 case "Decimal":
                 case "IntPtr":
                 case "UIntPtr":
-                    this.Kind = SystemTypeKind.Number; break;
+                    Kind = SystemTypeKind.Number; break;
                 case "DateTime":
                 case "DateTimeOffset":
-                    this.Kind = SystemTypeKind.Date; break;
+                    Kind = SystemTypeKind.Date; break;
                 default:
                     throw new ArgumentException(string.Format("The type '{0}' is not supported system type.", type.FullName));
             }

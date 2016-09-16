@@ -30,47 +30,45 @@ namespace Typescript.Definitions.Tools.TsModels
         /// <summary>
         /// Initializes a new instance of the TsEnumValue class with the specific name and value.
         /// </summary>
-        /// <param name="name">The name of the enum value.</param>
-        /// <param name="value">The value of the enum value.</param>
         public TsEnumValue(FieldInfo field)
         {
-            this.Field = field;
-            this.Name = field.Name;
+            Field = field;
+            Name = field.Name;
 
             var value = field.GetValue(null);
 
             var valueType = Enum.GetUnderlyingType(value.GetType());
             if (valueType == typeof(byte))
             {
-                this.Value = ((byte)value).ToString();
+                Value = ((byte)value).ToString();
             }
             if (valueType == typeof(sbyte))
             {
-                this.Value = ((sbyte)value).ToString();
+                Value = ((sbyte)value).ToString();
             }
             if (valueType == typeof(short))
             {
-                this.Value = ((short)value).ToString();
+                Value = ((short)value).ToString();
             }
             if (valueType == typeof(ushort))
             {
-                this.Value = ((ushort)value).ToString();
+                Value = ((ushort)value).ToString();
             }
             if (valueType == typeof(int))
             {
-                this.Value = ((int)value).ToString();
+                Value = ((int)value).ToString();
             }
             if (valueType == typeof(uint))
             {
-                this.Value = ((uint)value).ToString();
+                Value = ((uint)value).ToString();
             }
             if (valueType == typeof(long))
             {
-                this.Value = ((long)value).ToString();
+                Value = ((long)value).ToString();
             }
             if (valueType == typeof(ulong))
             {
-                this.Value = ((ulong)value).ToString();
+                Value = ((ulong)value).ToString();
             }
         }
     }

@@ -28,24 +28,24 @@ namespace Typescript.Definitions.Tools.TsModels
         public TsEnum(Type type)
             : base(type)
         {
-            if (!this.Type.GetTypeInfo().IsEnum)
+            if (!Type.GetTypeInfo().IsEnum)
             {
                 throw new ArgumentException("ClrType isn't enum.");
             }
 
-            this.Values = new List<TsEnumValue>(this.GetEnumValues(type));
+            Values = new List<TsEnumValue>(GetEnumValues(type));
 
             var attribute = Type.GetTypeInfo().GetCustomAttribute<TsEnumAttribute>(false);
             if (attribute != null)
             {
                 if (!string.IsNullOrEmpty(attribute.Name))
                 {
-                    this.Name = attribute.Name;
+                    Name = attribute.Name;
                 }
 
                 if (!string.IsNullOrEmpty(attribute.Module))
                 {
-                    this.Module.Name = attribute.Module;
+                    Module.Name = attribute.Module;
                 }
             }
         }

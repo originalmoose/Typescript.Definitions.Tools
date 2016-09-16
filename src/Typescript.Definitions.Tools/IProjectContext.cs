@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using NuGet.Frameworks;
 
-namespace Typescript.Definitions.Core
+namespace Typescript.Definitions.Tools
 {
     public interface IProjectContext
     {
