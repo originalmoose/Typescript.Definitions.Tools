@@ -37,3 +37,13 @@ Inside the ConfigureDefinitions method you can create any number of definiton fi
 Most of the methods are exactly the same as you would use in TypeLite. The only difference is the filename method, outdir method, and an optional parameter on the `For` methods that allows you to configure the type. Typelite had you chaining off the `For` to modify the type you just added it but I found the syntax for that to be confusing to read.
 
 Assembly scanning works off of attributes, they are exactly the same (and should work the same) as TypeLite.
+
+Once your project startup file is configured you can have the tool generate the definition files in one of two ways.
+
+Manually execute the following from a cmd line in the Project Directory.
+    
+    dotnet tsd
+
+Add the following to the scripts section of `project.json` (this should regenerate the definitions after each successful build)
+
+    "postcompile": [ "dotnet tsd --no-build" ]
