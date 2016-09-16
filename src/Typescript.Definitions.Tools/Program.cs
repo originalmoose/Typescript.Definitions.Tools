@@ -20,15 +20,16 @@ namespace Typescript.Definitions.Tools
         {
             DebugHelper.HandleDebugSwitch(ref args);
 
-            Console.WriteLine("Waiting");
-            Console.ReadLine();
-
             var dotnetParams = new DotnetBaseParams("dotnet-tsd", "Typescript Definition NET Core Tools", "Creates typescript definition files from .NET classes.");
-
+            
             dotnetParams.Parse(args);
+            
+            if (dotnetParams.IsHelp)
+            {
+                return;
+            }
 
             _environment = "Development";
-
 
             var startupProjectPath = dotnetParams.ProjectPath ?? Directory.GetCurrentDirectory();
             var startupProject = new ProjectContextFactory().Create(startupProjectPath,
@@ -42,6 +43,7 @@ namespace Typescript.Definitions.Tools
                 {
                     DotNetProjectBuilder.EnsureBuild(startupProject);
                 }
+
 
                 _contentRootPath = Path.GetDirectoryName(startupProject.ProjectFullPath);
 
@@ -66,10 +68,9 @@ namespace Typescript.Definitions.Tools
 
                 foreach (var builder in definitionsBuilder.Builders)
                 {
-                    Console.WriteLine($"Building {builder.Generator.Options.DefinitionFileName}.d.ts & {builder.Generator.Options.ConstFileName}.ts");
-                    builder.Generate(startupProjectPath);
+                    var files = builder.Generate(startupProjectPath);
+                    Console.WriteLine($"Created {string.Join(" & ", files)}");
                 }
-
             }
             catch (Exception)
             {

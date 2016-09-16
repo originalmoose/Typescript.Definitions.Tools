@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -18,7 +19,7 @@ namespace Typescript.Definitions.Tools
             ModelBuilder = new TsModelBuilder();
             Generator = new TsGenerator();
         }
-        internal void Generate(string projectDir)
+        internal IList<string> Generate(string projectDir)
         {
             var model = ModelBuilder.Build();
             //output the definition and the 
@@ -30,8 +31,11 @@ namespace Typescript.Definitions.Tools
             var constFile = System.IO.Path.Combine(definitionDirectory, $"{Generator.Options.ConstFileName}.ts");
 
             Directory.CreateDirectory(definitionDirectory);
+
             File.WriteAllText(definitionFile, definitionCode, Encoding.UTF8);
             File.WriteAllText(constFile, constantCode, Encoding.UTF8);
+
+            return new List<string> {definitionFile, constFile};
         }
 
         public DefinitionOptionsBuilder OutDir(string outDir)

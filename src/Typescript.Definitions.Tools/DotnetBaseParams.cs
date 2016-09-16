@@ -35,6 +35,8 @@ namespace Typescript.Definitions.Tools
 
         public List<string> RemainingArguments { get; set; }
 
+        public bool IsHelp => _app.IsShowingInformation;
+
         public DotnetBaseParams(string name, string fullName, string description)
         {
             _app = new CommandLineApplication(false)
