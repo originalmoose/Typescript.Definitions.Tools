@@ -367,7 +367,7 @@
           "lib/netstandard1.6/Microsoft.DotNet.ProjectModel.Loader.dll": {}
         }
       },
-      "Microsoft.Extensions.CommandLineUtils/1.1.0-alpha1-22000": {
+      "Microsoft.Extensions.CommandLineUtils/1.0.0": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.11",
@@ -3196,12 +3196,12 @@
         "lib/netstandard1.6/Microsoft.DotNet.ProjectModel.Loader.dll"
       ]
     },
-    "Microsoft.Extensions.CommandLineUtils/1.1.0-alpha1-22000": {
-      "sha512": "u6LsEqaGWZapWma+eSIoIJxCI3GUQCT2/oEkljq4JlqfX1hZ8jvgNr2Fi3bvCRdQcJL0XMy8EoAbEYlSrb2eDg==",
+    "Microsoft.Extensions.CommandLineUtils/1.0.0": {
+      "sha512": "kXJ8+YvEjp1j7ezJ7yvQMLYbRL6QlpBUjRoBfqghoe80yqZ5azYB90lL4iNeyRCznWF+cGm41aaIoFU0aOq7TQ==",
       "type": "package",
-      "path": "Microsoft.Extensions.CommandLineUtils/1.1.0-alpha1-22000",
+      "path": "Microsoft.Extensions.CommandLineUtils/1.0.0",
       "files": [
-        "Microsoft.Extensions.CommandLineUtils.1.1.0-alpha1-22000.nupkg.sha512",
+        "Microsoft.Extensions.CommandLineUtils.1.0.0.nupkg.sha512",
         "Microsoft.Extensions.CommandLineUtils.nuspec",
         "lib/net451/Microsoft.Extensions.CommandLineUtils.dll",
         "lib/net451/Microsoft.Extensions.CommandLineUtils.xml",
@@ -8240,9 +8240,8 @@
       "Microsoft.AspNetCore.Hosting >= 1.0.0",
       "Microsoft.DotNet.Cli.Utils >= 1.0.0-preview2-003121",
       "Microsoft.DotNet.Compiler.Common >= 1.0.0-preview2-003121",
-      "Microsoft.DotNet.ProjectModel >= 1.0.0-rc3-003121",
       "Microsoft.DotNet.ProjectModel.Loader >= 1.0.0-preview2-003121",
-      "Microsoft.Extensions.CommandLineUtils >= 1.1.0-alpha1-22000",
+      "Microsoft.Extensions.CommandLineUtils >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.0",
       "System.Reflection >= 4.1.0",
       "System.Reflection.Extensions >= 4.0.1",
