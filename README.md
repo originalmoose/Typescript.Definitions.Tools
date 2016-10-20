@@ -14,7 +14,7 @@ This project took much of its inspiration from TypeLITE and the EntityFramework 
 
 After creating a new .Net core application add the following to dependecies and tools in `project.json`
     
-    "Typescript.Definitions.Tools": "1.0.0"
+    "Typescript.Definitions.Tools": "1.0.1"
 
 Add the following method to `Startup.cs`
 
