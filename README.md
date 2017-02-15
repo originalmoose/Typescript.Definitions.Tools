@@ -27,7 +27,7 @@ Add the following method to `Startup.cs`
 
 After creating a new .Net core 1.1 application add the following to dependecies and tools in `project.json`
     
-    "Typescript.Definitions.Tools": "1.1.0-preview1"
+    "Typescript.Definitions.Tools": "1.1.0-preview1-final"
 
 Create a new class and have it implement `ITypedef`, example below.
 
