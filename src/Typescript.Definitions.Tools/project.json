@@ -1,24 +1,24 @@
 {
   
-  "version": "1.0.1",
+  "version": "1.1.0-*",
   "buildOptions": {
     "emitEntryPoint": true,
     "outputName": "dotnet-tsd"
   },
 
   "dependencies": {
-    "Microsoft.DotNet.Cli.Utils": "1.0.0-preview2-003121",
-    "Microsoft.DotNet.Compiler.Common": "1.0.0-preview2-003121",
-    "Microsoft.Extensions.CommandLineUtils": "1.0.0",
-    "Microsoft.DotNet.ProjectModel.Loader": "1.0.0-preview2-003121",
-    "Microsoft.AspNetCore.Hosting": "1.0.0",
-    "System.Reflection": "4.1.0",
-    "System.Reflection.Extensions": "4.0.1",
-    "System.Reflection.TypeExtensions": "4.1.0",
+    "Microsoft.DotNet.Cli.Utils": "1.0.0-rc4-004771",
+    "Microsoft.DotNet.Compiler.Common": "1.0.0-preview2-1-003177",
+    "Microsoft.DotNet.ProjectModel.Loader": "1.0.0-preview2-1-003177",
+    "Microsoft.Extensions.CommandLineUtils": "1.1.0",
+    "Microsoft.Extensions.DependencyInjection": "1.1.0",
     "Microsoft.NETCore.App": {
       "type": "platform",
-      "version": "1.0.0"
-    }
+      "version": "1.1.0"
+    },
+    "System.Reflection": "4.3.0",
+    "System.Reflection.Extensions": "4.3.0",
+    "System.Reflection.TypeExtensions": "4.3.0"
   },
 
   "frameworks": {

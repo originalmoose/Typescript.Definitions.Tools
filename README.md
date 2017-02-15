@@ -10,9 +10,9 @@ This project took much of its inspiration from TypeLITE and the EntityFramework 
 
 [EntityFrameworkCore](https://github.com/aspnet/EntityFramework)
 
-# Installation
+# Installation NetCore 1.0
 
-After creating a new .Net core application add the following to dependecies and tools in `project.json`
+After creating a new .Net core 1.0 application add the following to dependecies and tools in `project.json`
     
     "Typescript.Definitions.Tools": "1.0.1"
 
@@ -20,8 +20,27 @@ Add the following method to `Startup.cs`
 
     public void ConfigureDefinitions(IDefinitionBuilder definitonBuilder)
     {
+    	/* Configure definitions here. */
     }
     
+# Installation NetCore 1.1
+
+After creating a new .Net core 1.1 application add the following to dependecies and tools in `project.json`
+    
+    "Typescript.Definitions.Tools": "1.1.0-preview1"
+
+Create a new class and have it implement `ITypedef`, example below.
+
+    public class Typedef : ITypedef
+    {
+        public void Configure(IDefinitionBuilder builder)
+        {
+        	/* Configure definitions here. */
+        }
+    }
+
+# Definition Configuration
+
 Inside the ConfigureDefinitions method you can create any number of definiton files. There is only a single method on IDefinitionBuilder `AddDefinition` you can use it like so.
 
     definitionBuilder.AddDefinition(

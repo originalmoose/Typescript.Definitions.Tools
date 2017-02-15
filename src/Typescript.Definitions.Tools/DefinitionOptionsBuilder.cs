@@ -31,6 +31,7 @@ namespace Typescript.Definitions.Tools
             var constFile = System.IO.Path.Combine(definitionDirectory, $"{Generator.Options.ConstFileName}.ts");
 
             Directory.CreateDirectory(definitionDirectory);
+            Console.WriteLine(definitionFile);
 
             File.WriteAllText(definitionFile, definitionCode, Encoding.UTF8);
             File.WriteAllText(constFile, constantCode, Encoding.UTF8);
