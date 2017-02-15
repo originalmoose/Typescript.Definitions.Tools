@@ -57,6 +57,8 @@ Most of the methods are exactly the same as you would use in TypeLite. The only 
 
 Assembly scanning works off of attributes, they are exactly the same (and should work the same) as TypeLite.
 
+# Generating Definitions
+
 Once your project startup file is configured you can have the tool generate the definition files in one of two ways.
 
 Manually execute the following from a cmd line in the Project Directory.
