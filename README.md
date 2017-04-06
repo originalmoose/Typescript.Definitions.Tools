@@ -1,3 +1,7 @@
+# ABANDONED
+
+I have decided to abandon this project. I recently came across the [Typewriter project](https://frhagn.github.io/Typewriter/) which with a little work can spit out definition files exactly the same as TypeLITE. It has support for VS2017 and has worked for me for all my needs. I've even been able to get it to generate api classes for each asp.net controller action available which is where I wanted this project to eventually get to. 
+
 # Typescript.Definitions.Tools
 
 This is currently a Work in Progress....
